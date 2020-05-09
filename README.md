@@ -6,4 +6,4 @@ git简易自动化提交代码
 ![avatar](./assets/img/1.png)
 
 2、无默认值：
-![avatar](./assets/img/1.png)
+![avatar](./assets/img/2.png)
