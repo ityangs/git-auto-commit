@@ -1,11 +1,7 @@
 #!/bin/bash
 # git init
 function initStart() {
-  echo " ============================================================================="
-  echo " ====================================START===================================="
-  echo " ============================================================================="
-  echo " ========================git-auto-commit【$projectName】======================"
-  echo " ================================1、进入项目 =================================="
+  echo " ================================ init 发布初始化 =================================="
   echo "projectPath=$projectPath"
   cd $projectPath
 }
@@ -51,47 +47,13 @@ function selectBranch() {
 
 # git pull
 function gitPull() {
-  echo " ==================================3、gitPull ================================"
   git pull origin $selectBranch
   if [ $? == 0 ]; then
     istrue=0
     echo $istrue
   else
-    echo "No git pull data"
+   echo "No git pull data"
   fi
-}
-
-# git add
-function gitAdd() {
-  echo " =================================4、gitAdd ================================="
-  git add --all
-  if [ ! -n "$description" ]; then
-    echo "请输入提交描述文字如果没有默认: fix:调整细节提交代码"
-    read description
-  fi
-  if [ ! -n "$description" ]; then
-    description="调整细节提交代码"
-  fi
-  echo "提交描述文字:$description"
-  git commit -m $description
-}
-
-# git push
-function gitPush() {
-  echo " =================================5、gitPush ================================="
-  git push origin $selectBranch
-    if [ $? == 0 ]; then
-      istruetwo=0
-      echo $istruetwo
-    else
-      echo "No git push data"
-    fi
-}
-
-function initEnd() {
-  echo " ============================================================================="
-  echo " ====================================END===================================="
-  echo " ============================================================================="
 }
 
 #--------------------------------------------
@@ -115,12 +77,3 @@ selectBranch $branchArr
 
 #3、拉取最新的代码
 gitPull $selectBranch
-
-#4、添加改动文件
-gitAdd $description
-
-#5、提交改动文件
-gitPush $selectBranch
-
-#6、结束
-initEnd
